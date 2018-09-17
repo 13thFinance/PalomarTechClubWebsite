@@ -108,41 +108,56 @@
                 <p style="padding: 1%">In example: We can use an SSID and the passphrase "password" to generate a PMK, then combine the generated PMK with the captured Nonces, and the MAC addresse from the client to calculate the PTK. Finally if the MICs match the ones on the captured handshake with our generated ones, we know the password that we used to generate the PTK is the AP's password... Whooo, that's alot of tech jargon. But you made it this far, so we will make a computer do this for us AUTOMATICALLY. We will use Aircrack-ng pogram families to take of our issue.</p>
                 
                 <h3>Boot up Kali</h3>
+                <h5 style="background-color: darkorange">Capturing the handshake</h5>
                 <p style="padding: 1%">First find out what the name of your wireless card is called. You can do this by typing on a terminal:</p>
-                <ol style="font-weight: bolder;padding-left: 3%">
+                <ol style="font-weight: bolder;padding-left: 3%;background-color: darkred">
                     <li>ifconfig</li>
                 </ol>
-                <p style="padding-top: 1%">It should look something like wlan0 or mon0. </p>
+                <p style="padding-top: 1%">It should look something like wlan0 or wlan1 if you're using a usb dongle. </p>
                 <p>Once you know the name of your interface card, you need to find a target. >:)</p>
                 <p>To scan for a target you need to start monitorin the airwaves. We will use airmon-ng. On kali type:</p>
-                <ol style="font-weight: bolder;padding-left: 3%">
-                    <li>airmon-ng wlan0(or whatever your thing is called) start</li>
+                <ol style="font-weight: bolder;padding-left: 3%;background-color: darkred">
+                    <li>airmon-ng start wlan0(or whatever your thing is called)</li>
                 </ol>
-                <p>This will force your card to start monitoring the airwaves. It also renames your card, usually to something like wlan0mon adding mon at the end to symbolize it is monitoring and that you are a monster. Jk. If you want to make double check the name, type ifconfig again. </p>
+                <p>This will force your card to start monitoring the airwaves. It also renames your card, usually to something like wlan0mon adding mon at the end to symbolize it is monitoring and that you are a monster. Jk. If you want to double check the name, type ifconfig again. </p>
                 <p style="padding-top: 1%">Now to see your targets we will use airodump-ng, on a terminal type:</p>
                 
-                <ol style="font-weight: bolder;padding-left: 3%">
-                    <li>airodump-ng wlan0mon(or whatever)</li>
+                <ol style="font-weight: bolder;padding-left: 3%;background-color: darkred">
+                    <li>airodump-ng [interface card]</li>
                 </ol>
                 
                 <p>After you find your target you want to record(or copy-paste) the BSSID somewhere for later use. If the screen is going crazy you can press 'r' to disable automatic reorganization. Also get the channel that the AP is on.</p>
                 
                 <p>After you have what you want, kill the program using ctrl-c. And type the following command, putting the pertinent information inside the [ ] and without the [ ]:</p>
                 
-                 <ol style="font-weight: bolder;padding-left: 3%">
-                    <li>airodump-ng -c [channel] --bssid [the BSSID you wrote down] -w [name of file] [network card(wlan0mon)]</li>
+                 <ol style="font-weight: bolder;padding-left: 3%;background-color: darkred">
+                    <li>airodump-ng -c [channel] --bssid [the BSSID of the AP] -w [capture file name] [network card]</li>
                 </ol>
                 <p>What this command does is it focuses the airodump-ng program onto a specific AP and also starts recording any handshakes that might take place, it writes it to the file name you specified. Leave this running for now.</p>
                 
                 <p style="padding-top: 1%">Now... to capture a handshake. You can wait for a user to connect... which might take a whlle. Or you can kick em of using a deauth attack. Which sounds cooler?</p>
                 <p>To laung a deauth attack you first must open a new terminal. on that new terminal type:</p>
                 
-                <ol style="font-weight: bolder;padding-left: 3%">
-                    <li>aireplay-ng -deauth [BSSID];iudsagflidsaugflisafdgi</li>
+                <ol style="font-weight: bolder;padding-left: 3%;background-color: darkred">
+                    <li>aireplay-ng -0 [# of attacks] -a [BSSID of AP] -c [BSSID of target client to diconnect] [interface card]</li>
                 </ol>
                 
                 <p>If the airodump-ng program you have on the side captures a fourway-handshake it will record it in the first line of the captured output.</p>
                 <p>Once you have gotten a handshake, close airodump-ng.</p>
+                
+                <p>Check that there are four files in the directory you ran airodump-ng if not airodump-ng lied about capturing the handshake. At this point you can be "offline", and all you need to do is crack the password.</p>
+                
+                <p style="padding-top: 3%"></p>
+                <h5 style="background-color: darkorange;">Cracking the password</h5>
+                <p style="padding-top: 2%">Once you have the four way handshake captured you can crack the password by using aircrack-ng. You will need a wordlist which you can google and download from the internet. I recommend using rockyou.txt or google10000.lst. Once you have a list type:</p>
+                <ol style="font-weight: bolder;padding-left: 3%;background-color: darkred">
+                    <li>aircrack-ng -w [wordlist] --bssid [BSSID of the AP] [capture filename]*.cap</li>
+                </ol>
+                <p>If your wordlist contains the password it will tell you. And thats it.</p>
+                
+                <p style="padding-top: 3%"></p>
+                <h5 style="background-color: darkorange;">Weaknesses</h5>
+                <p>Some downsides of using the aircrack-ng suite of tools is the lack of automation and the fact that it does not take full advantage of your computer hardware. Aircrack uses by default on the CPU power so the better your the CPU the less time you'll have to wait. But CPUs are comparatively slow when put against graphics cards. Graphics cards are the way to go if you do this often. Another downside of aircrack-ng is the lack of wordlist modifiers. For example if your wordlist contains the password "password" but the actual password for the AP was "pa$$word" then youre straight out of luck. Luckily there are many of password cracking tools(noteably hashcat and hydra) out there that are more efficient and that will be on another guide... when I get to it.</p>
             </article>
             
         </div>
