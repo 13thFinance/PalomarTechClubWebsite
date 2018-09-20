@@ -6,42 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Palomar Tech Club: Hacking</title>
         <meta name="description" content="Palomar Tech Club">
-        <link rel="stylesheet" href="../../main.css">
-        
-        <style>
-            
-            body {
-                margin: 0;
-            }
-
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                width: 15%;
-                background-color: #505050;
-                position: fixed;
-                height: 100%;
-                overflow: auto;
-            }
-
-            li a {
-                display: block;
-                color: #000;
-                padding: 8px 16px;
-                text-decoration: none;
-            }
-
-            li a.active {
-                background-color: #4CAF50;
-                color: white;
-            }
-
-            li a:hover:not(.active) {
-                background-color: #555;
-                color: white;
-            }
-        </style>
+        <link rel="stylesheet" href="../main.css">
     </head>
     <body>
         
@@ -51,7 +16,7 @@
         <li><a class="active" href="../index.html">Home</a></li>
         <li><a href="hack.html">Hack: Intro</a></li>
         <li><a href="/hack/hack2/hack2.html">Hack: Metasploitable</a></li>
-        <li><a href="hackWifi_wpa2.html">Hack: Wifi_WPA2 </a></li>
+        <li><a class="redBackground" href="hackWifi_wpa2.html">Hack: Wifi_WPA2 </a></li>
         </ul>
         <!--------------------end sidenav ------------------------------------------>
         
@@ -78,7 +43,7 @@
             
             <article style="padding-bottom: 5%">
                 <h2 style="padding-top: 2%">Technical details: The "boring" stuff</h2>
-                <p>The question to understand is: How does a Wifi connection happen? You technically don't need to know this part as long as you know the process on how to crack Wifi, but it is good to see how systems are made in order to spot vulnerabilities. And so if you wan to learn how to crack wifi skip this, if yoou want to know how to hack Wifi, read this.</p>
+                <p>The question to understand is: How does a Wifi connection happen? You technically don't need to know this part as long as you know the process on how to crack Wifi, but it is good to see how systems are made in order to spot vulnerabilities. And so if you want to learn how to crack wifi skip this, if you want to know how to hack Wifi, read this.</p>
                 
                 <p>The WPA/WPA2 Connection process is the vulnerable part of the wireless security process. The connection process consist of four general step steps(also known as a four-way handshake):</p>
                 <div style="padding: 2%">
@@ -136,7 +101,7 @@
                 <p>What this command does is it focuses the airodump-ng program onto a specific AP and also starts recording any handshakes that might take place, it writes it to the file name you specified. Leave this running for now.</p>
                 
                 <p style="padding-top: 1%">Now... to capture a handshake. You can wait for a user to connect... which might take a whlle. Or you can kick em of using a deauth attack. Which sounds cooler?</p>
-                <p>To laung a deauth attack you first must open a new terminal. on that new terminal type:</p>
+                <p>To launch a deauth attack you first must open a new terminal. on that new terminal type:</p>
                 
                 <ol style="font-weight: bolder;padding-left: 3%;background-color: darkred">
                     <li>aireplay-ng -0 [# of attacks] -a [BSSID of AP] -c [BSSID of target client to diconnect] [interface card]</li>
@@ -164,13 +129,13 @@
         <!-------------------end article-------------------------------------------->
         <center>
             <h1>
-                <a href="../hack.html" style="padding:1%;">PREV PAGE</a>
+                <a href="hack2/hack2.html" style="padding:1%;">PREV PAGE</a>
                 <a  style="padding:1%;">NEXT PAGE</a>
             </h1>
         </center>
 
         <center>
-      <div style="margin:auto;padding:5%;align-self:">
+      <div style="margin:auto;padding:5%;align-self:auto">
             <a href="http://www2.palomar.edu/">
                 <img alt="Join the Palomar Tech Club!" src="../../mainpageImages/palocollegebanner.png" />
             </a>

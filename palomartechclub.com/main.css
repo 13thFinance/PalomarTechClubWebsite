@@ -18,6 +18,10 @@ time, mark, audio, video {
   background: transparent;
 }
 
+.redBackground{
+    background-color: #e85151;
+}
+
 html, body {
   font-size: 100%;
 }
@@ -257,6 +261,7 @@ h6 {
 
 p {
   /*margin: 0 0 0.75em;*/
+    padding: 3%;
     padding-left: 60px
   font-family: Helvetica Neue ,Helvetica,Arial,sans-serif;
 }
@@ -268,10 +273,7 @@ a {
   color: #ced9e0;
   text-decoration: none;
 }
-a:hover {
-  color: #9fb5c2;
-  border-color: #9fb5c2;
-}
+
 a:active, a:focus {
   color: #9fb5c2;
   border-color: #9fb5c2;
@@ -317,11 +319,15 @@ body {
 }
 
 a {
-  border-bottom: 1px solid #ced9e0;
+    border-bottom: 1px solid #ced9e0;
 }
 
 a:hover {
   color: #e85151;
+  border-color: #9fb5c2;
+  border-top: 1px solid #ced9e0;
+  border-left: 1px solid #ced9e0;
+  border-right: 1px solid #ced9e0;
 }
 
 header {
@@ -490,3 +496,35 @@ header nav ul li a.bordered {
   text-align: right;
 }
 
+
+ body {
+                margin: 0;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 15%;
+                background-color: #505050;
+                position: fixed;
+                height: 100%;
+                overflow: auto;
+            }
+
+            li a {
+                display: block;
+                color: #000;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+
+            li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            li a:hover:not(.active) {
+                background-color:crimson;
+                color: white;
+            }
