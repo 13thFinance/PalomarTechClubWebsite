@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Palomar Tech Club: Hacking</title>
+        <meta name="description" content="Palomar Tech Club">
+        <link rel="stylesheet" href="../../main.css">
+    </head>
+    <body>
+        
+        <h1>PALOMAR TECH CLUB</h1>
+        <!--------------------sidenav---------------------------------------------->
+        <ul>
+        <li><a class="active" href="../../index.html">Home</a></li>
+        <li><a href="../hack.html">Hack: Intro</a></li>
+        <li><a class="redBackground" href="hack2.html">Hack: Metasploitable</a></li>
+        <li><a href="../hackWifi_wpa2.html">Hack: Wifi_WPA2 </a></li>
+        </ul>
+        <!--------------------end sidenav ------------------------------------------>
+        
+        <!-------------------article------------------------------------------------>
+        
+        <div style="margin-left:15%;padding:1px 16px;height:100%;padding-top:2%;">
+             <article>
+                <h2>Preface</h2>
+                <p>By this point I expect for you to have a linux operating system and a basic understanding of linux commands. In this tutorial I'll be walking you through the steps of how to set up metasploitable on your machine. Metasploitable is an incredibly weak and vulnerable machine which is used by pen testers worldwide to get their feet wet. Now, you will be using it to learn some basic exploits. We will be installing metasploitable as a virtual machine, so if you have a computer pre-dating the dinosaurs do not try this at home, it is also adviseable to disconnect yourself from the internet at this time... but no one really does this. In anycase, We will be installing virtualBox on our linux machine, downloading metasploitable and "hacking" into it.</p>
+            </article>
+            
+            <article style="padding-top:3%;">
+                <h3>Step 1: Making Sure You Are Up to Date</h3>
+                <p style="padding-left:3%;padding-top:1%">BEFORE WE START ANYTHING MAKE SURE YOU ARE UP TO DATE. If you have forgotten here is a list of commands to walk you through it...</p>
+                <ol style="margin-left:5%;padding:1%;">
+                    <li>apt-get update</li>
+                    <li>apt-get upgrade</li>
+                    <li>apt-get dist-upgrade</li>
+                    <li>sudo reboot now</li>
+                    <li>sudo apt-get install linux-headers-$(uname -r) //this part may be a bit buggy depending on your hardware, if all else fails... google it.</li>
+                </ol>
+                
+                <p style="padding-left:3%;padding-top:1%">If you have trouble with packages follow this guide: 
+                    <a href="https://www.linkedin.com/pulse/kali-linux-fix-unable-locate-package-eyripidis-stefanidis">Fix Packages</a>
+            </article>
+            
+            <article style="padding-top:1%;">
+                <h3>Step 2: Install Virtual Box</h3>
+                <p style="padding-left:3%;padding-top:1%">
+                    If your distro is fully set up: sudo apt-get install virtualbox 
+                </p>
+            </article>
+            
+            <article style="padding-top:1%;">
+                <h3>Step 3: Get Metasploitable</h3>
+                <p style="padding-left:3%;padding-top:1%">
+                    Download the metasploitable vm from SourceForge:
+                    <a href="https://sourceforge.net/projects/metasploitable/">   Download Link</a>
+                </p>
+            </article>
+            
+            <article style="padding-top:1%;">
+                <h3>Step 4: Install Metasploitable as a VM</h3>
+                <p style="padding-left:3%;padding-top:1%">
+                    Unzip the file you just downloaded and set up a vm here is a video guide on how to to this if you don't already know:
+                        <a href="https://www.youtube.com/watch?v=DDvp4kKDMFY">   Video Link</a>  
+                </p>
+            </article>
+            
+            <article style="padding-top:1%;">
+                <h3>Step 5: Making sure Metasploitable is connected</h3>
+                <p style="padding-left:3%;padding-top:1%">
+                    You have to check if you can communicate with metasploitable over whatever network you have. Otherwise you cant talk to it or hack it! Here are the steps to check you are connected.
+                </p>
+                <ol style="margin-left:5%;padding:1%;">
+                    <li>Run your metasploitable VM</li>
+                    <li>login as msfadmin: USERNAME: msfadmin PW: msfadmin</li>
+                    <li>Check if you a connected to the internet, ie. ping google.com</li>
+                    <li>if you can ping google, change your network settings</li>
+                    <li>ifconfig</li>
+                    <li>next to <strong>inet</strong> you should see Metasploitable's ip</li>
+                    <li>the ip should look like 192.168.1.77 and will be your attack vector for your kali machine</li>
+                    <li>login to your kali machine thats is hosting the vm</li>
+                    <li>ping the ip you got from step 6</li>
+                    <li>if you can ping, you are connected, if you cant change your network settings</li>
+                </ol>
+            </article>
+        </div>
+        <!-------------------end article-------------------------------------------->
+        <center>
+            <h1>
+                <a href="../hack.html" style="padding:1%;">PREV PAGE</a>
+                <a  href="../hackWifi_WPA2.html" style="padding:1%;">NEXT PAGE</a>
+            </h1>
+        </center>
+
+        <center>
+      <div style="margin:auto;padding:5%;">
+            <a href="http://www2.palomar.edu/">
+                <img alt="Join the Palomar Tech Club!" src="../../mainpageImages/palocollegebanner.png" />
+            </a>
+        </div>
+            </center>
+        <div style="margin:auto;"><p style="background: black;text-align:right;">PalomarTechClub2017@mainline_server Felix-"Never ever ever host a metasploitable server online!"</p></div>
+    </body>
+</html>
