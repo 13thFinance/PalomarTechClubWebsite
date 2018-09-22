@@ -8,8 +8,9 @@ Version 1.0.0:
 * isnt a complete eyesore(at least visually, codewise thats another thing)  
 
 TODO:
+- [x] Setup Kali Tutorial
 - [x] Finish Wifi_WPA2 hacking guide  
-- [ ] Do some  
+- [ ] Do some Rapid7 tutorials  
 - [ ] Finish grep tutorial  
 
 
